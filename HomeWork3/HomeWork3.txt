@@ -1,1 +1,72 @@
 
+function countOccurrences(str, char) {
+    let count = 0;
+  
+    for (let i = 0; i < str.length; i++) {
+      if (str.charAt(i) === char) {
+        count++;
+      }
+    }
+  
+    return count;
+  }
+  
+  // Пример использования
+  const inputString = "hello world";
+  const targetChar = "l";
+  const result = countOccurrences(inputString, targetChar);
+  console.log(`Количество вхождений символа "${targetChar}" в строку: ${result}`);
+  
+  
+  
+  /*В этой версии мы используем цикл for для итерации 
+  по строке и счетчик count для подсчета 
+  вхождений символа. Если текущий символ равен 
+  заданному символу char, увеличиваем счетчик. 
+  В конце цикла возвращаем значение счетчика. 
+  Этот вариант проще и менее рекурсивен.*/
+
+  // Итеративная версия:
+
+  function countOccurrencesIterative(str, char) {
+    let count = 0;
+  
+    for (let i = 0; i < str.length; i++) {
+      if (str.charAt(i) === char) {
+        count++;
+      }
+    }
+  
+    return count;
+  }
+  // Рекурсивная версия:
+  
+ 
+  function countOccurrencesRecursive(str, char) {
+    // Базовый случай: если строка пуста, возвращаем 0
+    if (str.length === 0) {
+      return 0;
+    }
+  
+    // Если первый символ строки равен заданному символу, увеличиваем счетчик на 1
+    const firstChar = str.charAt(0);
+    const restOfString = str.slice(1);
+  
+    if (firstChar === char) {
+      return 1 + countOccurrencesRecursive(restOfString, char);
+    } else {
+      // Если символы не совпадают, продолжаем поиск в оставшейся части строки
+      return countOccurrencesRecursive(restOfString, char);
+    }
+  }
+  /*Обе версии выполняют одну и ту же задачу, 
+  но с использованием разных 
+  методов: итеративный метод использует цикл for, 
+  а рекурсивный метод вызывает себя
+   до достижения базового случая (пустой строки).*/
+  
+  
+  
+  
+  
+  
